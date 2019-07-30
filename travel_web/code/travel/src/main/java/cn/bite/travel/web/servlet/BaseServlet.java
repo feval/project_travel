@@ -19,7 +19,7 @@ import java.lang.reflect.Method;
  */
 
 //RegistUserServlet
-    ///registUserServlet
+//registUserServlet
 public class BaseServlet extends HttpServlet {
    /* protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -47,14 +47,14 @@ public class BaseServlet extends HttpServlet {
         //2.调用子类中的方法
         //暴力反射(获取子类私有的/受保护的方法)
         try {
-           Method method = clazz.getDeclaredMethod(methodName, HttpServletRequest.class, HttpServletResponse.class);
-        //    Method method = clazz.getMethod(methodName, HttpServletRequest.class, HttpServletResponse.class);
+//            Method method = clazz.getDeclaredMethod(methodName, HttpServletRequest.class, HttpServletResponse.class);
+            Method method = clazz.getMethod(methodName, HttpServletRequest.class, HttpServletResponse.class);
             //调用方法
             /**
              * 为 true 则指示反射的对象在使用时应该取消 Java 语言访问检查
              */
             //(调用子类的方法,proptected修饰)
-            method.setAccessible(true);
+//            method.setAccessible(true);
             method.invoke(this,request,response) ;
         } catch (NoSuchMethodException e) {
             e.printStackTrace();

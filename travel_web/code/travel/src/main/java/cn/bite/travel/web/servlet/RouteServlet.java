@@ -28,6 +28,9 @@ public class RouteServlet extends BaseServlet {
         String currentPageStr = request.getParameter("currentPage") ;
         String pageSizeStr = request.getParameter("pagesize") ;
 
+        //接收旅游线路的名称rname
+        String rname = request.getParameter("rname") ;
+
         //2)如果第一次访问，当前页码可以指定默认值/cid/pageSize
         int cid =  0 ;
         if(cidStr!=null && cidStr.length()>0){
@@ -55,7 +58,7 @@ public class RouteServlet extends BaseServlet {
         }
 
         //3.调用Service完成后台封装-PageBean
-       PageBean<Route> pb =  routeService.pageQuery(cid,currentPage,pageSize) ;
+       PageBean<Route> pb =  routeService.pageQuery(cid,currentPage,pageSize,rname) ; //需要传递rname
         //将PageBean对象的总记录数/总记录数/当前页码封装完成
 
 
@@ -66,6 +69,10 @@ public class RouteServlet extends BaseServlet {
 
 
     }
+
+
+    //根据旅游编号查询旅游线路信息  ----->Route---->发送Route 到前台rote_detial.html
+//    public void findByRid()
 
 
 }

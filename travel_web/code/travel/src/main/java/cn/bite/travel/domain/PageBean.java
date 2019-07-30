@@ -3,7 +3,7 @@ package cn.bite.travel.domain;
 import java.util.List;
 
 /**
- * 分页实体类
+ * 分页实体类(自定义的分页组件)
  */
 
 //mybatis--->分页插件

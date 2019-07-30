@@ -15,7 +15,7 @@ public class RouteServiceImpl implements RouteService {
     //声明旅游线路的dao层对象
     private RouteDao routeDao = new RouteDaoImpl() ;
     @Override
-    public PageBean<Route> pageQuery(int cid, int currentPage, int pageSize) {
+    public PageBean<Route> pageQuery(int cid, int currentPage, int pageSize,String rname) {
         //组装PageBean的信息
         //创PageBean对象
         PageBean<Route> pb = new PageBean<Route>() ;
@@ -25,14 +25,14 @@ public class RouteServiceImpl implements RouteService {
         //设置每页显示条数
         pb.setPageSize(pageSize);
         //封装总记录数(查数据库)
-        int totalCount = routeDao.findTotalPage(cid) ;
+        int totalCount = routeDao.findTotalPage(cid,rname) ;//513条
         System.out.println(totalCount);
         pb.setTotalCount(totalCount);
 
         //封装列表的数据集合(查数据库)
         //起始条数=(当前页码-1) * 每页显示条数
         int start = (currentPage-1) * pageSize ;
-        List<Route> list = routeDao.findByPage(cid,start,pageSize) ;
+        List<Route> list = routeDao.findByPage(cid,start,pageSize,rname) ;
         pb.setList(list);
 
         //计算总页数
